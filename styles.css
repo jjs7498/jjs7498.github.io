@@ -11,13 +11,13 @@
   }
   
   .page1 {
-    background-image: 'assets/image1.jpg';
+    background-image: url('../assets/image1.jpg');
     background-size: cover;
     background-position: center;
   }
 
   .page2 {
-    background-image: 'assets/image2.png';
+    background-image: url('../assets/image2.png');
     background-size: cover;
     background-position: center;
   }

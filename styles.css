@@ -23,6 +23,12 @@
   background-position: center;
 }
 
+.page3 {
+  background-image: url('../assets/image3.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 /* Add animation to the text */
 .animate {
   opacity: 0;

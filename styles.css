@@ -32,7 +32,6 @@
   background-image: url('../assets/image2.png');
   background-size: cover;
   background-position: center;
-  z-index: 0;
 }
 
 /* Set the styles for the animated elements */
@@ -40,9 +39,6 @@
   opacity: 0;
   transform: translateY(100px);
   transition: all 0.5s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.5);
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  z-index: 1;
 }
 
 .animate.show {

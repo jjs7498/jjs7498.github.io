@@ -30,19 +30,19 @@
 }
 
 .page4 {
-  background-color: grey;
+  background-image: url('../assets/image3.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .page5 {
-  background-color: grey;
+  background-image: url('../assets/image3.jpg');
   background-size: cover;
   background-position: center;
 }
 
-.page5 {
-  background-color: grey;
+.page6 {
+  background-image: url('../assets/image3.jpg');
   background-size: cover;
   background-position: center;
 }

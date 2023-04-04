@@ -1,27 +1,59 @@
-// Get all the animated elements
-const animatedElements = document.querySelectorAll('.animate');
+const pages = document.querySelectorAll('.page');
+let currentPage = 0;
 
-// Function to check if an element is in the viewport
-const isInViewport = (element) => {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-};
+window.addEventListener('wheel', event => {
+  event.preventDefault();
+  const delta = event.deltaY;
+  const direction = delta > 0 ? 1 : -1;
+  currentPage += direction;
+  if (currentPage < 0) {
+    currentPage = 0;
+  }
+  if (currentPage > pages.length - 1) {
+    currentPage = pages.length - 1;
+  }
+  pages[currentPage].scrollIntoView({
+    behavior: 'smooth'
+  });
+});
 
-// Function to handle the scroll event
-const handleScroll = () => {
-  animatedElements.forEach((element) => {
-    if (isInViewport(element)) {
-      element.classList.add('show');
+window.addEventListener('load', () => {
+  pages[0].querySelector('.animate').classList.add('active');
+});
+
+window.addEventListener('scroll', () => {
+  pages.forEach((page, index) => {
+    const top = page.offsetTop;
+    const bottom = top + page.offsetHeight;
+    const scrollTop = window.scrollY + window.innerHeight / 2;
+    if (scrollTop >= top && scrollTop <= bottom) {
+      currentPage = index;
+      page.querySelector('.animate').classList.add('active');
     } else {
-      element.classList.remove('show');
+      page.querySelector('.animate').classList.remove('active');
     }
   });
-};
+});
 
-// Add the scroll event listener
-window.addEventListener('scroll', handleScroll);
+window.addEventListener('keydown', event => {
+  const key = event.key;
+  if (key === 'ArrowDown' || key === 'ArrowRight') {
+    event.preventDefault();
+    currentPage++;
+    if (currentPage > pages.length - 1) {
+      currentPage = pages.length - 1;
+    }
+    pages[currentPage].scrollIntoView({
+      behavior: 'smooth'
+    });
+  } else if (key === 'ArrowUp' || key === 'ArrowLeft') {
+    event.preventDefault();
+    currentPage--;
+    if (currentPage < 0) {
+      currentPage = 0;
+    }
+    pages[currentPage].scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+});

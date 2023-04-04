@@ -32,6 +32,7 @@
   background-image: url('../assets/image2.png');
   background-size: cover;
   background-position: center;
+  z-index: 0;
 }
 
 /* Set the styles for the animated elements */

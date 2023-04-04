@@ -14,7 +14,7 @@
 .page1 {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
 }
 
 .page2 {

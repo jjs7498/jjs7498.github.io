@@ -29,6 +29,24 @@
   background-position: center;
 }
 
+.page4 {
+  background-color: grey;
+  background-size: cover;
+  background-position: center;
+}
+
+.page5 {
+  background-color: grey;
+  background-size: cover;
+  background-position: center;
+}
+
+.page5 {
+  background-color: grey;
+  background-size: cover;
+  background-position: center;
+}
+
 /* Add animation to the text */
 .animate {
   opacity: 0;

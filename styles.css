@@ -10,6 +10,7 @@
   padding: 20px;
 }
 
+/* Set the background image for each page */
 .page1 {
   background-image: url('../assets/image1.jpg');
   background-size: cover;
@@ -22,26 +23,14 @@
   background-position: center;
 }
 
-.page3 {
-  background-image: url('../assets/image2.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.page4 {
-  background-image: url('../assets/image2.png');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Set the styles for the animated elements */
+/* Add animation to the text */
 .animate {
   opacity: 0;
-  transform: translateY(100px);
-  transition: all 0.5s ease-in-out;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.animate.show {
+.animate.active {
   opacity: 1;
   transform: translateY(0);
 }

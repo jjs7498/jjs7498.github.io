@@ -1,59 +1,22 @@
 const pages = document.querySelectorAll('.page');
 let currentPage = 0;
 
-window.addEventListener('wheel', event => {
-  event.preventDefault();
-  const delta = event.deltaY;
-  const direction = delta > 0 ? 1 : -1;
-  currentPage += direction;
-  if (currentPage < 0) {
-    currentPage = 0;
-  }
-  if (currentPage > pages.length - 1) {
-    currentPage = pages.length - 1;
-  }
-  pages[currentPage].scrollIntoView({
-    behavior: 'smooth'
-  });
-});
+function goToPage(pageIndex) {
+  pages[currentPage].style.transform = `translateY(-${100 * currentPage}%)`;
+  pages[pageIndex].style.transform = `translateY(0%)`;
+  currentPage = pageIndex;
+}
 
-window.addEventListener('load', () => {
-  pages[0].querySelector('.animate').classList.add('active');
-});
-
-window.addEventListener('scroll', () => {
-  pages.forEach((page, index) => {
-    const top = page.offsetTop;
-    const bottom = top + page.offsetHeight;
-    const scrollTop = window.scrollY + window.innerHeight / 2;
-    if (scrollTop >= top && scrollTop <= bottom) {
-      currentPage = index;
-      page.querySelector('.animate').classList.add('active');
-    } else {
-      page.querySelector('.animate').classList.remove('active');
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+    if (currentPage < pages.length - 1) {
+      goToPage(currentPage + 1);
     }
-  });
-});
-
-window.addEventListener('keydown', event => {
-  const key = event.key;
-  if (key === 'ArrowDown' || key === 'ArrowRight') {
-    event.preventDefault();
-    currentPage++;
-    if (currentPage > pages.length - 1) {
-      currentPage = pages.length - 1;
+  } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+    if (currentPage > 0) {
+      goToPage(currentPage - 1);
     }
-    pages[currentPage].scrollIntoView({
-      behavior: 'smooth'
-    });
-  } else if (key === 'ArrowUp' || key === 'ArrowLeft') {
-    event.preventDefault();
-    currentPage--;
-    if (currentPage < 0) {
-      currentPage = 0;
-    }
-    pages[currentPage].scrollIntoView({
-      behavior: 'smooth'
-    });
   }
 });
+
+goToPage(currentPage);
